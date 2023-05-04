@@ -40,7 +40,7 @@ CREATE TABLE budgets
     user_id    INTEGER        NOT NULL REFERENCES users (user_id),
     name       VARCHAR(50)    NOT NULL,
     start_date DATE           NOT NULL CHECK (start_date <= end_date),
-    end_date   DATE           NOT NULL CHECK (end_date >= end_date),
+    end_date   DATE           CHECK (end_date >= end_date),
     amount     NUMERIC(10, 2) NOT NULL CHECK (amount >= 0),
     CONSTRAINT unique_budget_name_user_id UNIQUE (name, user_id)
 );
